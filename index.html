@@ -1,246 +1,211 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Sistema Solar</title>
-    <link rel="stylesheet" href="style/normalize.css">
-    <link rel="stylesheet" href="style/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100b1b">
+  <meta name="description" content="Explorá el Sol, los ocho planetas, la Luna y los planetas enanos con información astronómica basada en datos de NASA.">
+  <title>Solar Atlas — Explorador del sistema solar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/index.css">
+  <script src="index.js" defer></script>
 </head>
 <body>
-    <div id="contenedor" class="contenedor">
-        <header class="menu">
-            <div class="logo">
-                <p class="logo-nombre">
-                    Rodrigo<span>Developer Jr.</span>
-                </p>
-                <img id="hamburguesa" src="img/hamburguesa.png" alt="Icono Menu">
+  <div class="starfield starfield-one" aria-hidden="true"></div>
+  <div class="starfield starfield-two" aria-hidden="true"></div>
+
+  <div class="atlas-shell">
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="Solar Atlas, inicio">
+        <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand-copy">SOLAR <b>ATLAS</b><small>UN MAPA DE NUESTRO VECINDARIO</small></span>
+      </a>
+      <div class="masthead-meta">
+        <span class="signal"><i></i> ARCHIVO EXPLORABLE</span>
+        <span class="edition">EDICIÓN 01 <b>—</b> VÍA LÁCTEA</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span>01</span> EXPLORACIÓN HELIOCÉNTRICA</p>
+        <h1>Un sistema.<br><em>Incontables mundos.</em></h1>
+        <p class="hero-description">Acercate a la estrella que nos da vida, recorré sus planetas y descubrí qué hace único a cada mundo. Cada punto del mapa abre una ficha con datos reales.</p>
+      </div>
+      <div class="system-counts" aria-label="Resumen del sistema solar">
+        <div class="count-item"><strong>01</strong><span>ESTRELLA</span></div>
+        <div class="count-item"><strong>08</strong><span>PLANETAS</span></div>
+        <div class="count-item"><strong>05</strong><span>PLANETAS ENANOS</span></div>
+        <div class="count-item"><strong>461</strong><span>LUNAS RECONOCIDAS*</span></div>
+        <p>*Conteo oficial informado por NASA para octubre de 2026.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="explorer-layout" aria-label="Explorador interactivo del sistema solar">
+        <div class="map-column">
+          <div class="section-heading map-heading">
+            <div>
+              <p class="micro-label">MAPA 01 / VISTA GENERAL</p>
+              <h2>El sistema solar</h2>
             </div>
-            <nav id="menu-navegacion" class="menu-navegacion">
-                <ul class="navegacion">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contacto</a></li>
-                    <li>
-                        <form class="formulario">
-                            <label for="buscar"><img src="img/lupa.svg" alt="Icono Lupa"></label>
-                            <input type="text" name="buscar" id="buscar" placeholder="Buscar..">
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <aside class="universo">
-            <div class="contenedor-universo">
-                <div class="universo-info">
-                    <h1>Sistema Solar</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quae ea rerum magni, laboriosam ipsum reprehenderit autem soluta illo explicabo, facilis veritatis obcaecati. Veniam ipsam consequuntur ullam est voluptates magnam.</p>
-                    <div class="btn-info">
-                        <a href="#">Leer más</a>
-                    </div>
-                </div>
-                <ul class="planetas">
-                    <li>
-                        <picture>
-                            <source srcset="./img/sistema.webp" type="img/webp">
-                            <source srcset="./img/sistema.png" type="img/png">
-                            <img src="img/sistema.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/mercurio.webp" type="img/webp">
-                            <source srcset="./img/mercurio.png" type="img/png">
-                            <img src="img/mercurio.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/venus.webp" type="img/webp">
-                            <source srcset="./img/venus.png" type="img/png">
-                            <img src="img/venus.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/tierra.webp" type="img/webp">
-                            <source srcset="./img/tierra.png" type="img/png">
-                            <img src="img/tierra.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/marte.webp" type="img/webp">
-                            <source srcset="./img/marte.png" type="img/png">
-                            <img src="img/marte.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/jupiter.webp" type="img/webp">
-                            <source srcset="./img/jupiter.png" type="img/png">
-                            <img src="img/jupiter.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/saturno.webp" type="img/webp">
-                            <source srcset="./img/saturno.png" type="img/png">
-                            <img src="img/saturno.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/urano.webp" type="img/webp">
-                            <source srcset="./img/urano.png" type="img/png">
-                        </picture>
-                    </li>
-                    <li>
-                        <picture>
-                            <source srcset="./img/neptuno.webp" type="img/webp">
-                            <source srcset="./img/neptuno.png" type="img/png">
-                            <img src="img/neptuno.png" alt="Sistema Imagen">
-                        </picture>
-                    </li>
-                    <li>
-                </ul>
+            <span class="scale-note"><i></i> DISTANCIAS Y TAMAÑOS NO A ESCALA</span>
+          </div>
+
+          <div class="map-viewport" tabindex="0" aria-label="Mapa orbital; seleccioná un objeto para ver su ficha">
+            <div class="solar-map">
+              <div class="map-noise" aria-hidden="true"></div>
+              <div class="orbit orbit-1" aria-hidden="true"></div>
+              <div class="orbit orbit-2" aria-hidden="true"></div>
+              <div class="orbit orbit-3" aria-hidden="true"></div>
+              <div class="orbit orbit-4" aria-hidden="true"></div>
+              <div class="orbit orbit-5" aria-hidden="true"></div>
+              <div class="orbit orbit-6" aria-hidden="true"></div>
+              <div class="orbit orbit-7" aria-hidden="true"></div>
+              <div class="orbit orbit-8" aria-hidden="true"></div>
+
+              <button class="map-world map-sun is-active" type="button" data-body="sun" style="--x:50%;--y:50%;--size:88px" aria-label="Ver información del Sol" aria-pressed="true">
+                <span class="sun-aura" aria-hidden="true"></span>
+                <img src="planetas/sol.webp" alt="" draggable="false">
+                <span class="world-label">SOL</span>
+              </button>
+              <button class="map-world" type="button" data-body="mercury" style="--x:57%;--y:47%;--size:24px" aria-label="Ver información de Mercurio" aria-pressed="false">
+                <img src="planetas/mercurio.webp" alt="" draggable="false"><span class="world-label">MERCURIO</span>
+              </button>
+              <button class="map-world" type="button" data-body="venus" style="--x:43%;--y:35%;--size:30px" aria-label="Ver información de Venus" aria-pressed="false">
+                <img src="planetas/venus.webp" alt="" draggable="false"><span class="world-label">VENUS</span>
+              </button>
+              <button class="map-world" type="button" data-body="earth" style="--x:65%;--y:35%;--size:34px" aria-label="Ver información de la Tierra" aria-pressed="false">
+                <img src="planetas/tierra.webp" alt="" draggable="false"><span class="world-label">TIERRA</span>
+              </button>
+              <button class="map-world" type="button" data-body="mars" style="--x:69%;--y:66%;--size:30px" aria-label="Ver información de Marte" aria-pressed="false">
+                <img src="planetas/marte.webp" alt="" draggable="false"><span class="world-label">MARTE</span>
+              </button>
+              <button class="map-world" type="button" data-body="jupiter" style="--x:28%;--y:29%;--size:57px" aria-label="Ver información de Júpiter" aria-pressed="false">
+                <img src="planetas/jupiter.webp" alt="" draggable="false"><span class="world-label">JÚPITER</span>
+              </button>
+              <button class="map-world map-saturn" type="button" data-body="saturn" style="--x:24%;--y:68%;--size:58px" aria-label="Ver información de Saturno" aria-pressed="false">
+                <img src="planetas/saturno.webp" alt="" draggable="false"><span class="world-label">SATURNO</span>
+              </button>
+              <button class="map-world" type="button" data-body="uranus" style="--x:80%;--y:28%;--size:40px" aria-label="Ver información de Urano" aria-pressed="false">
+                <img src="planetas/urano.webp" alt="" draggable="false"><span class="world-label">URANO</span>
+              </button>
+              <button class="map-world" type="button" data-body="neptune" style="--x:84%;--y:75%;--size:39px" aria-label="Ver información de Neptuno" aria-pressed="false">
+                <img src="planetas/neptuno.png" alt="" draggable="false"><span class="world-label">NEPTUNO</span>
+              </button>
+
+              <div class="map-caption map-caption-inner">PLANETAS ROCOSOS</div>
+              <div class="map-caption map-caption-outer">GIGANTES EXTERIORES</div>
+              <div class="map-coordinates" aria-hidden="true">0° 00′ · 00″ N</div>
             </div>
+          </div>
+
+          <div class="map-legend">
+            <span><i class="legend-dot legend-star"></i> Estrella</span>
+            <span><i class="legend-dot legend-rock"></i> Rocosos</span>
+            <span><i class="legend-dot legend-giant"></i> Gigantes</span>
+            <span class="map-hint">Seleccioná un mundo para explorar <b>↗</b></span>
+          </div>
+        </div>
+
+        <aside class="detail-panel" id="detail-panel" aria-live="polite" aria-label="Ficha del objeto seleccionado">
+          <div class="detail-topline">
+            <span class="micro-label">FICHA CELESTE <b id="detail-number">00</b></span>
+            <span class="detail-status"><i></i> DATOS NASA</span>
+          </div>
+
+          <div class="detail-visual">
+            <div class="detail-visual-orbit" aria-hidden="true"></div>
+            <div class="detail-visual-glow" aria-hidden="true"></div>
+            <img id="detail-image" src="planetas/sol.webp" alt="Imagen del Sol">
+            <div id="detail-orb" class="detail-orb" hidden aria-hidden="true"></div>
+            <span class="visual-coordinate" id="detail-coordinate">CENTRO DEL SISTEMA</span>
+          </div>
+
+          <div class="detail-title-row">
+            <div>
+              <p class="object-kind" id="detail-kind">ESTRELLA · G2V</p>
+              <h2 id="detail-name">El Sol</h2>
+            </div>
+            <span class="object-index" id="detail-index">01 / 15</span>
+          </div>
+          <p class="detail-lead" id="detail-lead">La única estrella de nuestro sistema y la fuente de energía que mantiene todo en movimiento.</p>
+
+          <div class="temperature-line">
+            <span id="temperature-label">TEMPERATURA DE LA SUPERFICIE</span>
+            <strong id="detail-temperature">≈ 5.500 °C</strong>
+          </div>
+
+          <div class="detail-stats" id="detail-stats">
+            <div class="stat"><span>DIÁMETRO</span><strong>1,39 M km</strong></div>
+            <div class="stat"><span>DISTANCIA</span><strong>—</strong></div>
+            <div class="stat"><span>ROTACIÓN</span><strong>≈ 25 días</strong></div>
+            <div class="stat"><span>EDAD</span><strong>4.600 M años</strong></div>
+          </div>
+
+          <section class="detail-section">
+            <p class="micro-label">COMPOSICIÓN Y ENTORNO</p>
+            <div class="detail-facts">
+              <div><span>COMPOSICIÓN</span><p id="detail-composition">Principalmente hidrógeno y helio.</p></div>
+              <div><span>ATMÓSFERA</span><p id="detail-atmosphere">Fotosfera, cromosfera y corona.</p></div>
+              <div><span>SATÉLITES NATURALES</span><p id="detail-moons">No aplica: es una estrella.</p></div>
+              <div><span>ANILLOS</span><p id="detail-rings">No tiene.</p></div>
+            </div>
+          </section>
+
+          <section class="highlight-section">
+            <span class="highlight-mark" aria-hidden="true">✳</span>
+            <div>
+              <p class="micro-label">LO QUE LO HACE ÚNICO</p>
+              <p id="detail-highlight">En su núcleo, la fusión nuclear transforma hidrógeno en helio y libera la energía que llega a la Tierra como luz y calor.</p>
+            </div>
+          </section>
+
+          <section class="mission-section">
+            <p class="micro-label">EXPLORACIÓN</p>
+            <p id="detail-missions">Misiones como SOHO, Parker Solar Probe y Solar Orbiter estudian su actividad, su atmósfera y el viento solar.</p>
+          </section>
+
+          <a class="source-link" id="detail-source" href="https://science.nasa.gov/sun/facts/" target="_blank" rel="noopener noreferrer">
+            CONSULTAR FUENTE CIENTÍFICA <span>↗</span>
+          </a>
         </aside>
-    </div>
-    <main id="contenedor-planetas" class="contenedor-planetas">
-        <ul class="lista-planetas">
-            <li>
-                <picture>
-                    <source srcset="./planetas/mercurio.webp" type="img/webp">
-                    <source srcset="./planetas/mercurio.png" type="img/png">
-                    <img width="100" height="100" src="planetas/mercurio.png" alt="Sistema Imagen">
-                </picture>
-                <p>Mercurio</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/venus.webp" type="img/webp">
-                    <source srcset="./planetas/venus.png" type="img/png">
-                    <img width="100" height="100" src="planetas/venus.png" alt="Sistema Imagen">
-                </picture>
-                <p>Venus</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/tierra.webp" type="img/webp">
-                    <source srcset="./planetas/tierra.png" type="img/png">
-                    <img width="100" height="100" src="planetas/tierra.png" alt="Sistema Imagen">
-                </picture>
-                <p>Tierra</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/marte.webp" type="img/webp">
-                    <source srcset="./planetas/marte.png" type="img/png">
-                    <img width="100" height="100" src="planetas/marte.png" alt="Sistema Imagen">
-                </picture>
-                <p>Marte</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/jupiter.webp" type="img/webp">
-                    <source srcset="./planetas/jupiter.png" type="img/png">
-                    <img width="100" height="100" src="planetas/jupiter.png" alt="Sistema Imagen">
-                </picture>
-                <p>Jupiter</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/saturno.webp" type="img/webp">
-                    <source srcset="./planetas/saturno.png" type="img/png">
-                    <img width="100" height="100" src="planetas/saturno.png" alt="Sistema Imagen">
-                </picture>
-                <p>Saturno</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/urano.webp" type="img/webp">
-                    <source srcset="./planetas/urano.png" type="img/png">
-                    <img width="100" height="100" src="planetas/urano.png" alt="Sistema Imagen">
-                </picture>
-                <p>Urano</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/neptuno.webp" type="img/webp">
-                    <source srcset="./planetas/neptuno.png" type="img/png">
-                    <img width="100" height="100" src="./planetas/neptuno.png" alt="Sistema Imagen">
-                </picture>
-                <p>Neptuno</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/mercurio.webp" type="img/webp">
-                    <source srcset="./planetas/mercurio.png" type="img/png">
-                    <img width="100" height="100" src="planetas/mercurio.png" alt="Sistema Imagen">
-                </picture>
-                <p>Mercurio</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/venus.webp" type="img/webp">
-                    <source srcset="./planetas/venus.png" type="img/png">
-                    <img width="100" height="100" src="planetas/venus.png" alt="Sistema Imagen">
-                </picture>
-                <p>Venus</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/tierra.webp" type="img/webp">
-                    <source srcset="./planetas/tierra.png" type="img/png">
-                    <img width="100" height="100" src="planetas/tierra.png" alt="Sistema Imagen">
-                </picture>
-                <p>Tierra</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/marte.webp" type="img/webp">
-                    <source srcset="./planetas/marte.png" type="img/png">
-                    <img width="100" height="100" src="planetas/marte.png" alt="Sistema Imagen">
-                </picture>
-                <p>Marte</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/jupiter.webp" type="img/webp">
-                    <source srcset="./planetas/jupiter.png" type="img/png">
-                    <img width="100" height="100" src="planetas/jupiter.png" alt="Sistema Imagen">
-                </picture>
-                <p>Jupiter</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/saturno.webp" type="img/webp">
-                    <source srcset="./planetas/saturno.png" type="img/png">
-                    <img width="100" height="100" src="planetas/saturno.png" alt="Sistema Imagen">
-                </picture>
-                <p>Saturno</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/urano.webp" type="img/webp">
-                    <source srcset="./planetas/urano.png" type="img/png">
-                    <img width="100" height="100" src="planetas/urano.png" alt="Sistema Imagen">
-                </picture>
-                <p>Urano</p>
-            </li>
-            <li>
-                <picture>
-                    <source srcset="./planetas/neptuno.webp" type="img/webp">
-                    <source srcset="./planetas/neptuno.png" type="img/png">
-                    <img width="100" height="100" src="./planetas/neptuno.png" alt="Sistema Imagen">
-                </picture>
-                <p>Neptuno</p>
-            </li>
-        </ul>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <p class="micro-label">ÍNDICE DE EXPLORACIÓN</p>
+            <h2 id="catalog-title">Elegí tu próximo destino</h2>
+          </div>
+          <label class="search-box" for="world-search">
+            <span aria-hidden="true">⌕</span>
+            <input id="world-search" type="search" placeholder="Buscar un mundo…" autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="catalog-group">
+          <div class="catalog-label"><span>01</span> ESTRELLA Y PLANETAS <b>09 OBJETOS</b></div>
+          <div class="world-list" id="planet-list"></div>
+        </div>
+
+        <div class="catalog-group catalog-secondary">
+          <div class="catalog-label"><span>02</span> OTROS MUNDOS <b>06 OBJETOS</b></div>
+          <div class="world-list" id="other-list"></div>
+        </div>
+        <p class="empty-search" id="empty-search" hidden>No encontramos ese objeto. Probá con otro nombre.</p>
+      </section>
     </main>
-    <div id="spinner" class="lds-ripple"><div></div><div></div></div>
-    <script src="index.js"></script>
-</body> 
+
+    <footer class="atlas-footer">
+      <span>SOLAR ATLAS <b>·</b> INSPIRADO EN EL SISTEMA SOLAR Y LOS RECURSOS CIENTÍFICOS DE NASA <b>·</b> PROYECTO INDEPENDIENTE, NO OFICIAL</span>
+      <span>DATOS DE REFERENCIA: NASA / NSSDCA <b>·</b> CONSULTA 18 NOV 2026</span>
+      <a href="https://science.nasa.gov/solar-system/" target="_blank" rel="noopener noreferrer">NASA SOLAR SYSTEM <span>↗</span></a>
+    </footer>
+  </div>
+</body>
 </html>
+
