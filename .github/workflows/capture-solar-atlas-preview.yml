@@ -48,7 +48,7 @@ jobs:
             await page.evaluate(() => document.fonts.ready);
             await page.waitForFunction(() => {
               const images = [...document.querySelectorAll('.map-world img, #detail-image')];
-              return images.length === 9 && images.every(img => img.complete && img.naturalWidth > 0);
+              return images.length === 10 && images.every(img => img.complete && img.naturalWidth > 0);
             }, { timeout: 30000 });
             await page.screenshot({
               path: 'solar-atlas-preview.png',
