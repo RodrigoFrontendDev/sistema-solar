@@ -8,7 +8,7 @@ on:
       - index.html
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   capture:
@@ -57,10 +57,18 @@ jobs:
             await browser.close();
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
-      - name: Upload screenshot artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: solar-atlas-preview
-          path: solar-atlas-preview.png
-          if-no-files-found: error
-          retention-days: 3
+      - name: Optimize screenshot as WebP
+        run: |
+          python3 -m pip install --quiet Pillow
+          python3 - <<'PY'
+          from PIL import Image
+          with Image.open("solar-atlas-preview.png") as image:
+              image.convert("RGB").save("solar-atlas-preview.webp", "WEBP", quality=86, method=6)
+          PY
+      - name: Save screenshot to preview branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add solar-atlas-preview.webp
+          git commit -m "Add optimized Solar Atlas preview screenshot [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
