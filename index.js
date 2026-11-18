@@ -105,7 +105,7 @@ const bodyCatalog = [
     moons: "16 lunas conocidas en la ficha de NASA consultada. Tritón es la mayor.", rings: "Sí: anillos oscuros, estrechos y tenues.",
     highlight: "Sus vientos pueden superar los 2.000 km/h. Tritón, su luna mayor, orbita en sentido retrógrado y probablemente sea un objeto capturado del cinturón de Kuiper.",
     missions: "Voyager 2 realizó el único sobrevuelo cercano en agosto de 1989. Desde entonces, Hubble y telescopios terrestres siguen observando su atmósfera cambiante.",
-    source: "https://science.nasa.gov/neptune/neptune-facts/", image: "planetas/neptuno.webp", orb: ["#78a5ee","#243b91","#526bc7","#1d2c75"]
+    source: "https://science.nasa.gov/neptune/neptune-facts/", image: "planetas/neptuno.png", orb: ["#78a5ee","#243b91","#526bc7","#1d2c75"]
   },
   {
     id: "moon", name: "La Luna", shortName: "Luna", kind: "SATÉLITE NATURAL · TIERRA", group: "other",
