@@ -1,0 +1,82 @@
+name: Capture Solar Atlas preview
+
+on:
+  push:
+    branches:
+      - feat/solar-system-explorer
+    paths:
+      - index.html
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Serve Solar Atlas
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/solar-atlas-http.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/solar-atlas-http.log
+          exit 1
+      - name: Capture desktop screenshot
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const page = await browser.newPage({
+              viewport: { width: 1600, height: 900 },
+              deviceScaleFactor: 1
+            });
+            await page.goto('http://127.0.0.1:4173/', { waitUntil: 'networkidle' });
+            await page.evaluate(() => document.fonts.ready);
+            await page.addStyleTag({ content: `
+              .hero { padding: 32px 0 25px; gap: 30px; }
+              .hero h1 { font-size: clamp(3rem, 4.2vw, 4.25rem); line-height: .94; }
+              .hero-description { max-width: 560px; margin-top: 15px; font-size: .86rem; }
+              .system-counts { gap: 13px; padding-left: 20px; }
+              .explorer-layout { gap: 18px; }
+              .map-column { padding: 20px 22px 14px; }
+              .solar-map { height: 410px; }
+              .detail-panel { padding: 18px 20px 15px; }
+              .detail-visual { height: 135px; }
+            `});
+            await page.waitForFunction(() => {
+              const images = [...document.querySelectorAll('.map-world img, #detail-image')];
+              return images.length === 10 && images.every(img => img.complete && img.naturalWidth > 0);
+            }, { timeout: 30000 });
+            await page.screenshot({ path: 'solar-atlas-preview.png', animations: 'disabled' });
+            await browser.close();
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+      - name: Optimize screenshot as WebP
+        run: |
+          python3 -m pip install --quiet Pillow
+          python3 - <<'PY'
+          from PIL import Image
+          with Image.open("solar-atlas-preview.png") as image:
+              image.convert("RGB").save("solar-atlas-preview.webp", "WEBP", quality=88, method=6)
+          PY
+      - name: Save screenshot to preview branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add solar-atlas-preview.webp
+          git commit -m "Add composed Solar Atlas card screenshot [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
